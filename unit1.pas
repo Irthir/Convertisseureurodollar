@@ -5,27 +5,27 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls;
+  Classes, SysUtils, FileUtil, SpinEx, Forms, Controls, Graphics, Dialogs,
+  ExtCtrls, StdCtrls;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioGroup1: TRadioGroup;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    BtConvertir: TButton;
+    BtRAZ: TButton;
+    BtQuitter: TButton;
+    FSEValeurAConvertir: TFloatSpinEditEx;
+    LBValeurconvertie2: TLabel;
+    LbValeurAConvertir: TLabel;
+    LbValeurconvertie: TLabel;
+    RBEuroDollar: TRadioButton;
+    RBDollarEuro: TRadioButton;
+    RGChoixdeconversion: TRadioGroup;
+    procedure BtConvertirClick(Sender: TObject);
+    procedure BtRAZClick(Sender: TObject);
+    procedure BtQuitterClick(Sender: TObject);
   private
 
   public
@@ -41,35 +41,41 @@ implementation
 
 { TForm1 }
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.BtConvertirClick(Sender: TObject);
 Const TAUXCONVERT=0.88;
 begin
-  If RadioButton1.Checked=True Then
+  If RBEuroDollar.Checked=True Then
      Begin
-       If Edit1.Text<>'' Then
-           Begin
-                Edit2.Text:=floattostr(strtofloat((Edit1.Text))/TAUXCONVERT)
-           end;
+
+
+                LBValeurconvertie2.Caption:=floattostr((round((FSEValeurAConvertir.Value/TAUXCONVERT)*(100)))/100)
+
      end
      else
      Begin
-       If Edit2.Text<>'' Then
-           Begin
-                Edit1.Text:=floattostr(strtofloat((Edit2.Text))*TAUXCONVERT)
-           end;
+
+                LBValeurconvertie2.Caption:=floattostr((round((FSEValeurAConvertir.Value*TAUXCONVERT)*(100)))/100)
+
      end;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.BtRAZClick(Sender: TObject);
 begin
-     Edit1.Text:='';
-     Edit2.Text:='';
+     FSEValeurAConvertir.Value:=0;
+     LBValeurconvertie2.Caption:='0,0';
+     FSEValeurAConvertir.setfocus;
+     FSEValeurAConvertir.Hint:='0';
+     FSEValeurAConvertir.ShowHint:=true;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.BtQuitterClick(Sender: TObject);
 begin
-  close;
+   case QuestionDlg ('Confirmation','Voulez-vous quitter ?',mtCustom,[mrYes,'Oui', mrNo, 'Non', 'IsDefault'],'') of
+        mrYes: close;
+    end;
 end;
+
+
 
 
 

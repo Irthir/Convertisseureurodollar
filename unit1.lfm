@@ -3,18 +3,18 @@ object Form1: TForm1
   Height = 445
   Top = 202
   Width = 579
-  Caption = 'Form1'
+  Caption = 'Convertisseur Euro/Dollar'
   ClientHeight = 445
   ClientWidth = 579
   DesignTimePPI = 120
   LCLVersion = '2.0.0.4'
-  object RadioGroup1: TRadioGroup
+  object RGChoixdeconversion: TRadioGroup
     Left = 160
     Height = 131
     Top = 168
     Width = 231
     AutoFill = True
-    Caption = 'RadioGroup1'
+    Caption = 'Choix de conversion'
     ChildSizing.LeftRightSpacing = 6
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
     ChildSizing.EnlargeVertical = crsHomogenousChildResize
@@ -25,7 +25,7 @@ object Form1: TForm1
     ClientHeight = 106
     ClientWidth = 227
     TabOrder = 0
-    object RadioButton1: TRadioButton
+    object RBEuroDollar: TRadioButton
       Left = 6
       Height = 53
       Top = 0
@@ -35,7 +35,7 @@ object Form1: TForm1
       TabOrder = 1
       TabStop = True
     end
-    object RadioButton2: TRadioButton
+    object RBDollarEuro: TRadioButton
       Left = 6
       Height = 53
       Top = 53
@@ -44,63 +44,67 @@ object Form1: TForm1
       TabOrder = 0
     end
   end
-  object Edit1: TEdit
-    Left = 272
-    Height = 28
-    Top = 64
-    Width = 100
-    NumbersOnly = True
-    TabOrder = 1
-  end
-  object Edit2: TEdit
-    Left = 272
-    Height = 28
-    Top = 104
-    Width = 100
-    NumbersOnly = True
-    TabOrder = 2
-  end
-  object Button1: TButton
+  object BtConvertir: TButton
     Left = 120
     Height = 31
     Top = 320
     Width = 94
     Caption = 'Convertir'
-    OnClick = Button1Click
-    TabOrder = 3
+    OnClick = BtConvertirClick
+    TabOrder = 1
   end
-  object Button2: TButton
+  object BtRAZ: TButton
     Left = 232
     Height = 31
     Top = 320
     Width = 94
     Caption = 'RAZ'
-    OnClick = Button2Click
-    TabOrder = 4
+    OnClick = BtRAZClick
+    TabOrder = 2
   end
-  object Button3: TButton
+  object BtQuitter: TButton
     Left = 344
     Height = 31
     Top = 320
     Width = 94
     Caption = 'Quitter'
-    OnClick = Button3Click
-    TabOrder = 5
+    OnClick = BtQuitterClick
+    TabOrder = 3
   end
-  object Label1: TLabel
-    Left = 208
+  object LbValeurAConvertir: TLabel
+    Left = 144
     Height = 20
-    Top = 63
-    Width = 37
-    Caption = 'Euro :'
+    Top = 64
+    Width = 122
+    Caption = 'Valeur à convertir :'
     ParentColor = False
   end
-  object Label2: TLabel
-    Left = 197
+  object LbValeurconvertie: TLabel
+    Left = 144
     Height = 20
     Top = 112
-    Width = 48
-    Caption = 'Dollar :'
+    Width = 113
+    Caption = 'Valeur convertie :'
+    ParentColor = False
+  end
+  object FSEValeurAConvertir: TFloatSpinEditEx
+    Left = 272
+    Height = 28
+    Top = 64
+    Width = 104
+    MaxLength = 0
+    TabOrder = 4
+    MaxValue = 100000
+    MinValue = 0
+    NullValue = 0
+    Value = 0
+  end
+  object LBValeurconvertie2: TLabel
+    Left = 336
+    Height = 20
+    Top = 112
+    Width = 19
+    Caption = '0,0'
     ParentColor = False
   end
 end
