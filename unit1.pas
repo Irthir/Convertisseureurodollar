@@ -48,13 +48,13 @@ begin
      Begin
 
 
-                LBValeurconvertie2.Caption:=floattostr((round((FSEValeurAConvertir.Value/TAUXCONVERT)*(100)))/100)
+                LBValeurconvertie2.Caption:=Concat(floattostr((round((FSEValeurAConvertir.Value/TAUXCONVERT)*(100)))/100),' €')
 
      end
      else
      Begin
 
-                LBValeurconvertie2.Caption:=floattostr((round((FSEValeurAConvertir.Value*TAUXCONVERT)*(100)))/100)
+                LBValeurconvertie2.Caption:=concat(floattostr((round((FSEValeurAConvertir.Value*TAUXCONVERT)*(100)))/100),' $')
 
      end;
 end;
